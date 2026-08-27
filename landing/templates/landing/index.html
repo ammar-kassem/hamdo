@@ -1,0 +1,966 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>حمدو الدلال | التسويق بالمحتوى</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-black">
+
+  <!-- hero -->
+  <section class="hero">
+    <span class="eyebrow">حمدو الدلال</span>
+
+    <h2>
+      نظام عملي لتحقيق
+      <span class="en-accent">100</span> ألف
+      متابع و
+      <span class="en-accent">10</span> ألف
+      دولار شهرياً خلال
+      <span class="en-accent">90</span> يوم
+    </h2>
+
+    <!-- video -->
+    {% if hero_video %}
+    <div class="video-wrap">
+      <div class="video-frame">
+        <span class="video-corner video-corner--tl"></span>
+        <span class="video-corner video-corner--tr"></span>
+        <span class="video-corner video-corner--bl"></span>
+        <span class="video-corner video-corner--br"></span>
+
+        <div class="video-frame__inner">
+          <iframe
+            src="{{ hero_video.video_url }}"
+            frameborder="0"
+            allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <button class="btn-gold">احجز الآن</button>
+  </section>
+
+
+  <!-- ========== قسم: موثّق من قبل ========== -->
+  <section class="verified">
+    <div class="verified__head">
+      <h2 class="verified__title">موثّق من قبل..</h2>
+      <span class="verified__divider"></span>
+    </div>
+
+    <div class="verified__viewport">
+      <div class="verified__track">
+
+        {% for client in verified_clients %}
+        <article class="v-card">
+          <div class="v-card__avatar">
+            <img src="{{ client.avatar.url }}" alt="{{ client.name }}">
+            <span class="v-card__badge" aria-label="حساب موثّق">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M5 12.5L9.5 17L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+          <div class="v-card__meta">
+            <span class="v-card__name">{{ client.name }}</span>
+            <span class="v-card__count">{{ client.followers_count }}</span>
+          </div>
+        </article>
+        {% endfor %}
+
+        <!-- ===== نسخة مكررة من نفس الكروت لضمان حركة سلايدر متواصلة بدون فراغات ===== -->
+        {% for client in verified_clients %}
+        <article class="v-card" aria-hidden="true">
+          <div class="v-card__avatar">
+            <img src="{{ client.avatar.url }}" alt="">
+            <span class="v-card__badge">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M5 12.5L9.5 17L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+          <div class="v-card__meta">
+            <span class="v-card__name">{{ client.name }}</span>
+            <span class="v-card__count">{{ client.followers_count }}</span>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== قسم: +500M مشاهدة (Showcase Marquee) ========== -->
+  <section class="showcase">
+    <div class="showcase__head">
+      <h2 class="showcase__title">أكثر من
+        <span class="showcase__num">+500M</span>
+        مشاهدة
+      </h2>
+    </div>
+
+    <div class="showcase__rows">
+
+      <!-- الصف الأول: يتحرك يساراً -->
+      <div class="marquee-row marquee-row--left" data-row>
+        <div class="marquee-track" data-track>
+          {% for reel in reels_row1 %}
+          <article class="reel-card">
+            <img src="{{ reel.image.url }}" alt="" loading="lazy">
+            <span class="reel-card__views">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
+              </svg>{{ reel.views_label }}
+            </span>
+          </article>
+          {% endfor %}
+          <!-- نسخة مكررة لضمان حلقة لا نهائية بدون فراغ -->
+          {% for reel in reels_row1 %}
+          <article class="reel-card" aria-hidden="true">
+            <img src="{{ reel.image.url }}" alt="" loading="lazy">
+            <span class="reel-card__views">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
+              </svg>{{ reel.views_label }}
+            </span>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- الصف الثاني: يتحرك بالاتجاه المعاكس -->
+      <div class="marquee-row marquee-row--right" data-row>
+        <div class="marquee-track" data-track>
+          {% for reel in reels_row2 %}
+          <article class="reel-card">
+            <img src="{{ reel.image.url }}" alt="" loading="lazy">
+            <span class="reel-card__views">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
+              </svg>{{ reel.views_label }}
+            </span>
+          </article>
+          {% endfor %}
+          {% for reel in reels_row2 %}
+          <article class="reel-card" aria-hidden="true">
+            <img src="{{ reel.image.url }}" alt="" loading="lazy">
+            <span class="reel-card__views">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
+              </svg>{{ reel.views_label }}
+            </span>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- الصف الثالث: نفس اتجاه الصف الأول -->
+      <div class="marquee-row marquee-row--left" data-row>
+        <div class="marquee-track" data-track>
+          {% for reel in reels_row3 %}
+          <article class="reel-card">
+            <img src="{{ reel.image.url }}" alt="" loading="lazy">
+            <span class="reel-card__views">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
+              </svg>{{ reel.views_label }}
+            </span>
+          </article>
+          {% endfor %}
+          {% for reel in reels_row3 %}
+          <article class="reel-card" aria-hidden="true">
+            <img src="{{ reel.image.url }}" alt="" loading="lazy">
+            <span class="reel-card__views">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
+              </svg>{{ reel.views_label }}
+            </span>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+<!-- ========== قسم: تحوّل العملاء (Slider) ========== -->
+<section class="revamp">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    {% for item in transformations %}
+    <defs>
+      <linearGradient id="revampGoldV{{ forloop.counter }}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" style="stop-color:var(--gold-light)"/>
+        <stop offset="55%" style="stop-color:var(--gold)"/>
+        <stop offset="100%" style="stop-color:var(--gold-dark)"/>
+      </linearGradient>
+      <linearGradient id="revampGoldH{{ forloop.counter }}" x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0%" style="stop-color:var(--gold-light)"/>
+        <stop offset="55%" style="stop-color:var(--gold)"/>
+        <stop offset="100%" style="stop-color:var(--gold-dark)"/>
+      </linearGradient>
+    </defs>
+    {% endfor %}
+  </svg>
+
+  <div class="revamp__head">
+    <h2 class="revamp__title">تحوّل العملاء</h2>
+    <span class="revamp__divider"></span>
+    <p class="revamp__sub">نتائج حقيقية قبل وبعد تطبيق النظام</p>
+  </div>
+
+  <div class="revamp__nav">
+    <button type="button" class="revamp__arrow revamp__arrow--prev" data-revamp-prev aria-label="السابق">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M9 5l7 7-7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="revamp__slider" data-revamp-slider>
+      <div class="revamp__track" data-revamp-track>
+
+        {% for item in transformations %}
+        <div class="revamp__slide" data-revamp-slide>
+          <span class="revamp__badge">{{ forloop.counter|stringformat:"02d" }}</span>
+          <div class="revamp__pair">
+            <span class="r-follow">{{ item.caption }}</span>
+            <figure class="r-photo">
+              <img src="{{ item.before_image.url }}" alt="الحساب قبل" loading="lazy" decoding="async">
+              <span class="r-tag r-tag--before">قبل</span>
+            </figure>
+            <span class="r-connector" aria-hidden="true">
+              <svg class="r-connector__svg r-connector__svg--v" viewBox="0 0 60 130" preserveAspectRatio="none">
+                <path d="M30,4 C52,22 8,38 30,52 C52,66 8,82 30,96 C48,108 12,116 30,124" fill="none" stroke="url(#revampGoldV{{ forloop.counter }})" stroke-width="3" stroke-linecap="round" class="r-connector__path"/>
+              </svg>
+              <svg class="r-connector__svg r-connector__svg--h" viewBox="0 0 130 60" preserveAspectRatio="none">
+                <path d="M126,30 C104,12 92,48 66,30 C40,12 28,48 4,30" fill="none" stroke="url(#revampGoldH{{ forloop.counter }})" stroke-width="3" stroke-linecap="round" class="r-connector__path"/>
+              </svg>
+            </span>
+            <figure class="r-photo">
+              <img src="{{ item.after_image.url }}" alt="الحساب بعد" loading="lazy" decoding="async">
+              <span class="r-tag r-tag--after">بعد</span>
+            </figure>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <button type="button" class="revamp__arrow revamp__arrow--next" data-revamp-next aria-label="التالي">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M15 5l-7 7 7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="revamp__dots" data-revamp-dots></div>
+</section>
+
+
+<!-- ========== قسم: بعض قصص نجاح عملائنا ========== -->
+<section class="stories">
+  <div class="stories__head">
+    <h2 class="stories__title">بعض قصص نجاح عملائنا</h2>
+    <span class="stories__divider"></span>
+  </div>
+
+  <div class="stories__nav">
+    <button type="button" class="stories__arrow stories__arrow--prev" data-stories-prev aria-label="السابق">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M9 5l7 7-7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="stories__slider" data-stories-slider>
+      <div class="stories__track" data-stories-track>
+
+        {% for story in success_stories %}
+        <div class="stories__slide" data-stories-slide>
+          <article class="s-card">
+            <span class="s-card__badge">{{ forloop.counter|stringformat:"02d" }}</span>
+            <figure class="s-thumb">
+              <img src="{{ story.thumbnail_url }}" alt="{{ story.title }}" loading="lazy" decoding="async">
+              <button type="button" class="s-thumb__play" data-video-trigger data-video-id="{{ story.youtube_id }}" aria-label="تشغيل الفيديو">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M8 5v14l11-7-11-7Z" fill="#201603"/></svg>
+              </button>
+            </figure>
+            <p class="s-card__name">{{ story.title }}</p>
+          </article>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <button type="button" class="stories__arrow stories__arrow--next" data-stories-next aria-label="التالي">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M15 5l-7 7 7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="stories__dots" data-stories-dots></div>
+</section>
+
+<!-- ========== نافذة الفيديو المنبثقة ========== -->
+<div class="video-modal" data-video-modal aria-hidden="true">
+  <button type="button" class="video-modal__close" data-video-close aria-label="إغلاق">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>
+  <div class="video-modal__frame">
+    <div class="video-modal__ratio" data-video-container></div>
+  </div>
+</div>
+
+
+  <!-- ========== قسم: ركائز النجاح ========== -->
+<section class="pillars">
+  <div class="pillars__head">
+    <span class="pillars__eyebrow">لماذا هذا النظام؟</span>
+    <h2 class="pillars__title">خمس ركائز تبني بها مشروعك التدريبي</h2>
+    <span class="pillars__divider"></span>
+  </div>
+
+  <div class="pillars__grid">
+
+    <!-- بطاقة 1 -->
+    <article class="p-card" data-reveal>
+      <span class="p-card__num">01</span>
+      <span class="p-card__icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.3 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.3 9.4l6.1-.8L12 3Z" stroke="url(#pGrad1)" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </span>
+      <p class="p-card__text">امتلاك المعرفة وحده لا يكفي؛ تحويل خبرتك إلى علامة تجارية موثوقة هو الخطوة الأولى لتصدر مجالك وبناء ثقة قوية مع جمهورك المستهدف.</p>
+    </article>
+
+    <!-- بطاقة 2 -->
+    <article class="p-card" data-reveal>
+      <span class="p-card__num">02</span>
+      <span class="p-card__icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 18l5-5 3 3 8-8M20 8h-4v4" stroke="url(#pGrad2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <p class="p-card__text">تحويل الانتباه إلى أرباح: استراتيجية عملية لنقل جمهورك المهتم من مرحلة المتابعة إلى التعاقد الفعلي على خدماتك التدريبية.</p>
+    </article>
+
+    <!-- بطاقة 3 -->
+    <article class="p-card" data-reveal>
+      <span class="p-card__num">03</span>
+      <span class="p-card__icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3 21h18M6 21V10l6-5 6 5v11M10 21v-6h4v6" stroke="url(#pGrad3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <p class="p-card__text">تأسيس مشروع تدريبي عبر الإنترنت وفق أسس صحيحة تضمن لك جذب العملاء بانتظام وبناء نموذج عمل قابل للتوسع.</p>
+    </article>
+
+    <!-- بطاقة 4 -->
+    <article class="p-card" data-reveal>
+      <span class="p-card__num">04</span>
+      <span class="p-card__icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="8.5" stroke="url(#pGrad4)" stroke-width="1.7"/><path d="M12 3.5v17M3.5 12h17" stroke="url(#pGrad4)" stroke-width="1.4"/></svg>
+      </span>
+      <p class="p-card__text">بناء منظومة تسويق رقمية مستدامة على وسائل التواصل الاجتماعي تضمن لك الاستمرارية وتدفق العملاء دون الاعتماد على العشوائية.</p>
+    </article>
+
+    <!-- بطاقة 5 — مميّزة (الهدف النهائي) -->
+    <article class="p-card p-card--feature" data-reveal>
+      <span class="p-card__num">05</span>
+      <span class="p-card__icon p-card__icon--lg">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2" stroke="url(#pGrad5)" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <p class="p-card__text p-card__text--feature">
+        بناء قاعدة جماهيرية تتجاوز الـ<span class="p-card__stat">100K</span> إلى
+        <span class="p-card__stat">500K</span> متابع، وتحويل هذا التفاعل إلى دخل يتخطى الـ<span class="p-card__stat">$10,000</span>
+        والـ<span class="p-card__stat">$20,000</span> شهرياً من بيع برامجك وخدماتك.
+      </p>
+    </article>
+
+  </div>
+
+  <!-- تدرجات الأيقونات (مشتركة، تعريف واحد فقط) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="pGrad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--gold-light)"/><stop offset="100%" style="stop-color:var(--gold)"/></linearGradient>
+      <linearGradient id="pGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--gold-light)"/><stop offset="100%" style="stop-color:var(--gold)"/></linearGradient>
+      <linearGradient id="pGrad3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--gold-light)"/><stop offset="100%" style="stop-color:var(--gold)"/></linearGradient>
+      <linearGradient id="pGrad4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--gold-light)"/><stop offset="100%" style="stop-color:var(--gold)"/></linearGradient>
+      <linearGradient id="pGrad5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--gold-light)"/><stop offset="100%" style="stop-color:var(--gold)"/></linearGradient>
+    </defs>
+  </svg>
+</section>"
+  
+
+
+  
+<!-- ========== قسم: ماذا قال عنّا المبدعين (Testimonials Slider) ========== -->
+<section class="quotes">
+  <div class="quotes__head">
+    <h2 class="quotes__title">ماذا قال عنّا المبدعين</h2>
+    <span class="quotes__divider"></span>
+  </div>
+
+  <div class="quotes__slider">
+    <button type="button" class="quotes__arrow quotes__arrow--prev" data-prev aria-label="السابق">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+        <path d="M9 5l7 7-7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <div class="quotes__viewport" data-viewport>
+      <div class="quotes__track" data-track>
+
+        {% for t in testimonials %}
+        <article class="q-card" data-card>
+          <div class="q-card__bubble">
+            <span class="q-card__mark">”</span>
+            <p class="q-card__text">{{ t.text }}</p>
+            <span class="q-card__tail"></span>
+          </div>
+          <div class="q-card__person">
+            <img class="q-card__avatar" src="{{ t.avatar.url }}" alt="{{ t.name }}">
+            <span class="q-card__name">{{ t.name }}</span>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <button type="button" class="quotes__arrow quotes__arrow--next" data-next aria-label="التالي">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+        <path d="M9 5l7 7-7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="quotes__dots" data-dots></div>
+</section>
+
+  
+  
+  <!-- ========== الفوتر ========== -->
+  <footer class="site-footer">
+    <span class="site-footer__seam" aria-hidden="true"></span>
+    
+    <div class="site-footer__inner">
+      
+      <!-- الشعار / التوقيع -->
+      <div class="site-footer__brand">
+        <span class="site-footer__name">حمدو الدلال</span>
+      </div>
+      
+      <!-- روابط التواصل -->
+      <nav class="site-footer__social" aria-label="روابط التواصل الاجتماعي">
+        <a href="#" class="social-btn" aria-label="إنستغرام" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="social-btn" aria-label="تيك توك" target="_blank" rel="noopener">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="#" class="social-btn" aria-label="سناب شات" target="_blank" rel="noopener">
+          <i class="fa-brands fa-snapchat"></i>
+        </a>
+        <a href="#" class="social-btn" aria-label="واتساب" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="#" class="social-btn" aria-label="اكس (تويتر)" target="_blank" rel="noopener">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      </nav>
+      
+      <!-- الحقوق -->
+      <p class="site-footer__copy">© <span class="site-footer__year"></span> جميع الحقوق محفوظة — حمدو الدلال</p>
+      
+    </div>
+  </footer>
+  
+  
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ===== سلايدر: تحوّل العملاء ===== */
+  (function () {
+    var slider = document.querySelector('[data-revamp-slider]');
+    var track  = document.querySelector('[data-revamp-track]');
+    var slides = Array.prototype.slice.call(document.querySelectorAll('[data-revamp-slide]'));
+    var dotsWrap = document.querySelector('[data-revamp-dots]');
+    var prevBtn = document.querySelector('[data-revamp-prev]');
+    var nextBtn = document.querySelector('[data-revamp-next]');
+
+    if (!slider || !track || !slides.length || !dotsWrap) {
+      console.warn('Revamp slider: عنصر مفقود.');
+      return;
+    }
+
+    var mq = window.matchMedia('(min-width: 860px)');
+    var index = 0;
+    var timer = null;
+
+    function itemsPerView() {
+      return mq.matches ? 4 : 1;
+    }
+
+    function maxIndex() {
+      return Math.max(0, slides.length - itemsPerView());
+    }
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      var count = maxIndex() + 1;
+
+      for (var i = 0; i < count; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'revamp__dot' + (i === index ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'مجموعة ' + (i + 1));
+
+        (function (idx) {
+          dot.addEventListener('click', function () {
+            goTo(idx);
+            resetTimer();
+          });
+        })(i);
+
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    function applyLayout() {
+      var count = slides.length;
+      var perView = itemsPerView();
+
+      track.style.width = (count / perView * 100) + '%';
+
+      slides.forEach(function (s) {
+        s.style.flex = '0 0 ' + (100 / count) + '%';
+        s.style.maxWidth = (100 / count) + '%';
+      });
+
+      if (index > maxIndex()) {
+        index = maxIndex();
+      }
+
+      buildDots();
+      render();
+    }
+
+    function render() {
+      var count = slides.length;
+
+      track.style.transform =
+        'translateX(-' + (index * 100 / count) + '%)';
+
+      var dots = Array.prototype.slice.call(dotsWrap.children);
+
+      dots.forEach(function (d, i) {
+        d.classList.toggle('is-active', i === index);
+      });
+
+      if (prevBtn) prevBtn.disabled = index <= 0;
+      if (nextBtn) nextBtn.disabled = index >= maxIndex();
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(maxIndex(), i));
+      render();
+    }
+
+    function next() {
+      index = index >= maxIndex() ? 0 : index + 1;
+      render();
+    }
+
+    function prev() {
+      index = index <= 0 ? maxIndex() : index - 1;
+      render();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 4500);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        prev();
+        resetTimer();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        next();
+        resetTimer();
+      });
+    }
+
+    function onMqChange(handler) {
+      if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', handler);
+      } else if (typeof mq.addListener === 'function') {
+        mq.addListener(handler);
+      }
+    }
+
+    onMqChange(applyLayout);
+
+    window.addEventListener('resize', function () {
+      clearTimeout(window.__revampResizeT);
+      window.__revampResizeT = setTimeout(applyLayout, 200);
+    });
+
+    var startX = 0;
+    var deltaX = 0;
+    var dragging = false;
+
+    slider.addEventListener('touchstart', function (e) {
+      dragging = true;
+      startX = e.touches[0].clientX;
+      clearInterval(timer);
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', function (e) {
+      if (!dragging) return;
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function () {
+      if (!dragging) return;
+
+      dragging = false;
+
+      if (deltaX > 40) {
+        prev();
+      } else if (deltaX < -40) {
+        next();
+      }
+
+      deltaX = 0;
+      resetTimer();
+    });
+
+    applyLayout();
+    resetTimer();
+
+  })();
+
+
+  /* ===== سلايدر: ماذا قال عنّا المبدعين ===== */
+  (function () {
+    var viewport = document.querySelector('[data-viewport]');
+    var track = document.querySelector('[data-track]');
+    var cards = Array.prototype.slice.call(
+      document.querySelectorAll('[data-card]')
+    );
+    var dotsWrap = document.querySelector('[data-dots]');
+    var prevBtn = document.querySelector('[data-prev]');
+    var nextBtn = document.querySelector('[data-next]');
+
+    if (!viewport || !cards.length || !dotsWrap) {
+      console.warn('Quotes slider: عنصر مفقود.');
+      return;
+    }
+
+    var activeIndex = 0;
+
+    /* إنشاء النقاط */
+    cards.forEach(function (_, i) {
+      var dot = document.createElement('button');
+
+      dot.type = 'button';
+      dot.className =
+        'quotes__dot' + (i === 0 ? ' is-active' : '');
+
+      dot.setAttribute('aria-label', 'اقتباس ' + (i + 1));
+
+      dot.addEventListener('click', function () {
+        goTo(i);
+      });
+
+      dotsWrap.appendChild(dot);
+    });
+
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function setActive(i) {
+      activeIndex = i;
+
+      dots.forEach(function (d, idx) {
+        d.classList.toggle('is-active', idx === i);
+      });
+    }
+
+    /*
+     * تحريك السلايدر أفقيًا فقط
+     * بدون scrollIntoView()
+     *
+     * هذا يمنع الصفحة الرئيسية من التحرك عموديًا
+     * أثناء الـ autoplay.
+     */
+    function goTo(i) {
+      i = Math.max(0, Math.min(cards.length - 1, i));
+
+      var card = cards[i];
+
+      var targetLeft =
+        card.offsetLeft -
+        (viewport.clientWidth - card.offsetWidth) / 2;
+
+      viewport.scrollTo({
+        left: targetLeft,
+        behavior: 'smooth'
+      });
+
+      setActive(i);
+    }
+
+    /*
+     * مراقبة البطاقة الحالية
+     */
+    var io = new IntersectionObserver(function (entries) {
+
+      entries.forEach(function (entry) {
+
+        if (
+          entry.isIntersecting &&
+          entry.intersectionRatio > 0.6
+        ) {
+          setActive(cards.indexOf(entry.target));
+        }
+
+      });
+
+    }, {
+      root: viewport,
+      threshold: [0.6]
+    });
+
+    cards.forEach(function (c) {
+      io.observe(c);
+    });
+
+    /*
+     * الأزرار
+     */
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        goTo(activeIndex - 1);
+        stopAutoplay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        goTo(activeIndex + 1);
+        stopAutoplay();
+      });
+    }
+
+    /*
+     * التشغيل التلقائي
+     */
+    var autoplay = setInterval(function () {
+      goTo((activeIndex + 1) % cards.length);
+    }, 4500);
+
+    function stopAutoplay() {
+      clearInterval(autoplay);
+    }
+
+    viewport.addEventListener(
+      'pointerdown',
+      stopAutoplay,
+      { once: true }
+    );
+
+    viewport.addEventListener(
+      'touchstart',
+      stopAutoplay,
+      { once: true, passive: true }
+    );
+
+  })();
+
+});
+
+
+/* ===== سلايدر: بعض قصص نجاح عملائنا ===== */
+    (function () {
+      var slider = document.querySelector('[data-stories-slider]');
+      var track  = document.querySelector('[data-stories-track]');
+      var slides = Array.prototype.slice.call(document.querySelectorAll('[data-stories-slide]'));
+      var dotsWrap = document.querySelector('[data-stories-dots]');
+      var prevBtn = document.querySelector('[data-stories-prev]');
+      var nextBtn = document.querySelector('[data-stories-next]');
+
+      if (!slider || !track || !slides.length || !dotsWrap) {
+        console.warn('Stories slider: عنصر مفقود.');
+        return;
+      }
+
+      var mq = window.matchMedia('(min-width: 860px)');
+      var index = 0;
+      var timer = null;
+
+      function itemsPerView() { return mq.matches ? 3 : 1; }
+      function maxIndex() { return Math.max(0, slides.length - itemsPerView()); }
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        var count = maxIndex() + 1;
+        for (var i = 0; i < count; i++) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'stories__dot' + (i === index ? ' is-active' : '');
+          dot.setAttribute('aria-label', 'مجموعة ' + (i + 1));
+          (function (idx) {
+            dot.addEventListener('click', function () { goTo(idx); resetTimer(); });
+          })(i);
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function applyLayout() {
+        var count = slides.length;
+        var perView = itemsPerView();
+        track.style.width = (count / perView * 100) + '%';
+        slides.forEach(function (s) {
+          s.style.flex = '0 0 ' + (100 / count) + '%';
+          s.style.maxWidth = (100 / count) + '%';
+        });
+        if (index > maxIndex()) index = maxIndex();
+        buildDots();
+        render();
+      }
+
+      function render() {
+        var count = slides.length;
+        track.style.transform = 'translateX(-' + (index * 100 / count) + '%)';
+        var dots = Array.prototype.slice.call(dotsWrap.children);
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === index); });
+        if (prevBtn) prevBtn.disabled = index <= 0;
+        if (nextBtn) nextBtn.disabled = index >= maxIndex();
+      }
+
+      function goTo(i) { index = Math.max(0, Math.min(maxIndex(), i)); render(); }
+      function next() { index = index >= maxIndex() ? 0 : index + 1; render(); }
+      function prev() { index = index <= 0 ? maxIndex() : index - 1; render(); }
+      function resetTimer() { clearInterval(timer); timer = setInterval(next, 4500); }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { prev(); resetTimer(); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { next(); resetTimer(); });
+
+      function onMqChange(handler) {
+        if (typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+        else if (typeof mq.addListener === 'function') mq.addListener(handler);
+      }
+      onMqChange(applyLayout);
+
+      window.addEventListener('resize', function () {
+        clearTimeout(window.__storiesResizeT);
+        window.__storiesResizeT = setTimeout(applyLayout, 200);
+      });
+
+      var startX = 0, deltaX = 0, dragging = false;
+      slider.addEventListener('touchstart', function (e) {
+        dragging = true; startX = e.touches[0].clientX; clearInterval(timer);
+      }, { passive: true });
+      slider.addEventListener('touchmove', function (e) {
+        if (!dragging) return;
+        deltaX = e.touches[0].clientX - startX;
+      }, { passive: true });
+      slider.addEventListener('touchend', function () {
+        if (!dragging) return;
+        dragging = false;
+        if (deltaX > 40) prev();
+        else if (deltaX < -40) next();
+        deltaX = 0;
+        resetTimer();
+      });
+
+      applyLayout();
+      resetTimer();
+    })();
+
+    /* ===== نافذة فيديو يوتيوب المنبثقة ===== */
+    (function () {
+      var modal = document.querySelector('[data-video-modal]');
+      var container = document.querySelector('[data-video-container]');
+      var closeBtn = document.querySelector('[data-video-close]');
+      var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-video-trigger]'));
+      if (!modal || !container || !triggers.length) {
+        console.warn('Video modal: عنصر مفقود.');
+        return;
+      }
+
+      function openModal(videoId) {
+        container.innerHTML =
+          '<iframe src="https://www.youtube.com/embed/' + videoId +
+          '?autoplay=1&rel=0" title="فيديو يوتيوب" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        container.innerHTML = ''; // يوقف تشغيل الفيديو فوراً
+        document.body.style.overflow = '';
+      }
+
+      triggers.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-video-id');
+          if (id) openModal(id);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();  
+
+
+
+       /* ===== ظهور تدريجي للبطاقات عند التمرير ===== */
+  (function () {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.pillars [data-reveal]'));
+    if (!cards.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('is-visible'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(function (c) { io.observe(c); });
+  })();     
+</script>
+<script src="{% static 'landing/js/script.js' %}"></script>  
+</body>
+</html>
