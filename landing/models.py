@@ -2,7 +2,7 @@ from django.db import models
 
 
 class HeroVideo(models.Model):
-    video_url = models.URLField(verbose_name="رابط الفيديو (Vimeo/YouTube)")
+    video_url = models.URLField(verbose_name="رابط الفيديو (يوتيوب)")
     is_active = models.BooleanField(default=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
@@ -12,6 +12,23 @@ class HeroVideo(models.Model):
     def __str__(self):
         return f"فيديو رئيسي — {self.uploaded_at:%Y-%m-%d}"
 
+    def video_id(self):
+        """يستخرج معرّف الفيديو من أي صيغة رابط يوتيوب شائعة"""
+        url = self.video_url
+        if 'embed/' in url:
+            return url.split('embed/')[-1].split('?')[0]
+        if 'youtu.be/' in url:
+            return url.split('youtu.be/')[-1].split('?')[0]
+        if 'v=' in url:
+            return url.split('v=')[-1].split('&')[0]
+        return ''
+
+    def thumbnail_url(self):
+        vid = self.video_id()
+        return f"https://img.youtube.com/vi/{vid}/hqdefault.jpg" if vid else ''
+
+
+      
 
 class VerifiedClient(models.Model):
     """القسم الثاني: موثّقون من قبل"""

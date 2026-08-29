@@ -29,29 +29,28 @@
       <span class="en-accent">90</span> يوم
     </h2>
 
-    <!-- video -->
-    {% if hero_video %}
-    <div class="video-wrap">
-      <div class="video-frame">
-        <span class="video-corner video-corner--tl"></span>
-        <span class="video-corner video-corner--tr"></span>
-        <span class="video-corner video-corner--bl"></span>
-        <span class="video-corner video-corner--br"></span>
+<!-- video -->
+{% if hero_video %}
+<div class="video-wrap">
+  <div class="video-frame">
+    <span class="video-corner video-corner--tl"></span>
+    <span class="video-corner video-corner--tr"></span>
+    <span class="video-corner video-corner--bl"></span>
+    <span class="video-corner video-corner--br"></span>
 
-        <div class="video-frame__inner">
-          <iframe
-            src="{{ hero_video.video_url }}"
-            frameborder="0"
-            allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
+    <div class="video-frame__inner" data-hero-video data-video-id="{{ hero_video.video_id }}">
+      <img class="video-frame__thumb" src="{{ hero_video.thumbnail_url }}" alt="" loading="lazy" decoding="async">
+      <button type="button" class="video-frame__play" data-hero-play aria-label="تشغيل الفيديو">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M8 5v14l11-7-11-7Z" fill="#201603"/></svg>
+      </button>
     </div>
-    {% endif %}
+  </div>
+</div>
+{% endif %}
 
-    <button class="btn-gold">احجز الآن</button>
+    
+
+    <a class="btn-gold" href="https://calendly.com/hamdomarketing/45-minute-meeting-clone">احجز الآن<a/>
   </section>
 
 
@@ -960,6 +959,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cards.forEach(function (c) { io.observe(c); });
   })();     
+
+
+
+ /* ===== تشغيل فيديو الهيرو عند الضغط (تحميل كسول) ===== */
+    (function () {
+      var wrap = document.querySelector('[data-hero-video]');
+      var playBtn = document.querySelector('[data-hero-play]');
+      if (!wrap || !playBtn) return;
+
+      playBtn.addEventListener('click', function () {
+        var videoId = wrap.getAttribute('data-video-id');
+        if (!videoId) return;
+
+        wrap.innerHTML =
+          '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId +
+          '?autoplay=1&rel=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      });
+    })(); 
 </script>
 <script src="{% static 'landing/js/script.js' %}"></script>  
 </body>
