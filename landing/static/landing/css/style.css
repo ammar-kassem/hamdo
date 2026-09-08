@@ -1022,6 +1022,16 @@
         justify-content: center !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
   /* ========================================
      قسم: ماذا قال عنّا المبدعين
   ======================================== */
@@ -1111,93 +1121,28 @@
   }
 
   /* ===== بطاقة الاقتباس ===== */
+    /* ===== بطاقة السكرين شوت ===== */
   .q-card {
-    direction: rtl;
     flex: 0 0 auto;
-    width: clamp(240px, 76vw, 320px);
+    width: clamp(220px, 72vw, 300px);
     scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
-  .q-card__bubble {
-    position: relative;
-    width: 100%;
-    padding: clamp(1.5rem, 4vw, 1.9rem) clamp(1.25rem, 3.5vw, 1.6rem) clamp(1.6rem, 4vw, 2rem);
-    background: #1c1c1e;
-    border: 1px solid rgba(212, 175, 55, 0.22);
-    border-radius: 20px;
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.5);
-  }
-
-  .q-card__mark {
-    position: absolute;
-    top: -22px;
-    right: 18px;
-    font-family: 'Cinzel', serif;
-    font-size: 3.2rem;
-    line-height: 1;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--gold-light, #f4e3a1), var(--gold, #d4af37) 55%, var(--gold-dark, #8a6a1c));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
-    user-select: none;
-  }
-
-  .q-card__text {
-    margin: 0;
-    font-family: 'Noto Kufi Arabic', sans-serif;
-    font-weight: 400;
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    line-height: 1.9;
-    color: #ffffff;
-    text-align: right;
-  }
-
-  /* ذيل الفقاعة: مربع مدوّر مائل يربط الفقاعة بالصورة */
-  .q-card__tail {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    width: 22px;
-    height: 22px;
-    transform: translateX(-50%) rotate(45deg);
-    background: #1c1c1e;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
-    border-left: 1px solid rgba(212, 175, 55, 0.22);
-    border-radius: 0 0 0 5px;
-  }
-
-  .q-card__person {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: -20px;
-  }
-
-  .q-card__avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 999px;
-    object-fit: cover;
+  .q-card__shot {
     display: block;
-    border: 2.5px solid var(--gold, #d4af37);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.5), 0 4px 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
     background: #141414;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.5);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   }
 
-  .q-card__name {
-    font-family: 'Cinzel', serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    letter-spacing: 0.4px;
-    color: rgba(255, 255, 255, 0.85);
+  .q-card__shot:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.45);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.55), 0 0 20px rgba(212, 175, 55, 0.15);
   }
 
   /* ===== النقاط ===== */
@@ -1858,4 +1803,177 @@
   
   
   
-  
+
+
+
+
+
+
+
+
+  /* ========================================
+     قسم: نبذة عن حمدو الدلال
+  ======================================== */
+  .about {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .about__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.75rem, 5vw, 2.25rem);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border-radius: 20px;
+    background: linear-gradient(180deg, #131110 0%, #0b0a08 100%);
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ===== الصورة ===== */
+  .about__media {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .about__frame {
+    width: clamp(170px, 42vw, 210px);
+    aspect-ratio: 1 / 1;
+    padding: 5px;
+    border-radius: 16px;
+    background: linear-gradient(150deg, var(--gold-dark), var(--gold) 50%, var(--gold-light));
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 26px rgba(212, 175, 55, 0.16);
+  }
+
+  .about__photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    background: #141414;
+  }
+
+  /* شارة صغيرة متراكبة على زاوية الصورة */
+  .about__ribbon {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.35rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+    color: #201603;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45), 0 0 14px rgba(212, 175, 55, 0.5);
+    white-space: nowrap;
+  }
+
+  /* خط فاصل عمودي ذهبي بين الصورة والنص (يظهر من مقاس اللابتوب) */
+  .about__seam {
+    display: none;
+  }
+
+  /* ===== المحتوى ===== */
+  .about__content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .about__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    margin-bottom: 0.9rem;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), transparent);
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .about__name {
+    margin: 0 0 0.9rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: clamp(1.5rem, 1rem + 2.2vw, 2.1rem);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .about__tagline {
+    margin: 0;
+    max-width: 40rem;
+    font-weight: 500;
+    line-height: 1.9;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .about__accent {
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .about__divider {
+    display: block;
+    width: 56px;
+    height: 2px;
+    margin: clamp(1.5rem, 3vw, 1.9rem) 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .about__bio {
+    margin: 0;
+    max-width: 42rem;
+    line-height: 2;
+    font-size: clamp(0.88rem, 1.6vw, 0.96rem);
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  /* ===== من مقاس اللابتوب: صورة بجانب النص مع خط فاصل ===== */
+  @media (min-width: 780px) {
+    .about__card {
+      flex-direction: row;
+      align-items: center;
+      text-align: right;
+    }
+
+    .about__seam {
+      display: block;
+      flex: 0 0 auto;
+      align-self: stretch;
+      width: 1px;
+      margin: 0.5rem 0;
+      background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+    }
+
+    .about__content {
+      align-items: flex-start;
+      text-align: right;
+      margin-top: 0;
+    }
+
+    .about__tagline,
+    .about__bio {
+      max-width: none;
+    }
+  }

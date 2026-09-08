@@ -327,6 +327,47 @@
 </div>
 
 
+
+
+
+<!-- ========== قسم: نبذة عن حمدو الدلال ========== -->
+<section class="about">
+  <div class="about__card">
+
+    <div class="about__media">
+      <div class="about__frame">
+        <img class="about__photo" src="{% static 'img/1.png' %}" alt="حمدو الدلال" loading="lazy" decoding="async">
+      </div>
+      <span class="about__ribbon">الخبير</span>
+    </div>
+
+    <span class="about__seam" aria-hidden="true"></span>
+
+    <div class="about__content">
+      <span class="about__eyebrow">من أنا؟</span>
+      <h2 class="about__name">حمدو الدلال</h2>
+
+      <p class="about__tagline">
+        خبير في <span class="about__accent">نمو الحسابات</span> وبناء
+        <span class="about__accent">العلامة الشخصية</span> على وسائل التواصل الاجتماعي،
+        متخصص في التحويل من صفر إلى <span class="about__accent">مليون متابع</span>
+        عبر استراتيجيات النمو العضوي.
+      </p>
+
+      <span class="about__divider"></span>
+
+      <p class="about__bio">
+        ساعدت صناع محتوى، وعلامات تجارية، ورواد أعمال في العالم العربي على تحقيق
+        نتائج حقيقية وزيادة تأثيرهم الرقمي في أسواق شديدة التنافس، مع بناء جمهور
+        قوي قابل للتحويل إلى عملاء من خلال استراتيجيتي المبتكرة.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
   <!-- ========== قسم: ركائز النجاح ========== -->
 <section class="pillars">
   <div class="pillars__head">
@@ -402,8 +443,7 @@
   
 
 
-  
-<!-- ========== قسم: ماذا قال عنّا المبدعين (Testimonials Slider) ========== -->
+  <!-- ========== قسم: ماذا قال عنّا المبدعين (Screenshots Slider) ========== -->
 <section class="quotes">
   <div class="quotes__head">
     <h2 class="quotes__title">ماذا قال عنّا المبدعين</h2>
@@ -422,15 +462,7 @@
 
         {% for t in testimonials %}
         <article class="q-card" data-card>
-          <div class="q-card__bubble">
-            <span class="q-card__mark">”</span>
-            <p class="q-card__text">{{ t.text }}</p>
-            <span class="q-card__tail"></span>
-          </div>
-          <div class="q-card__person">
-            <img class="q-card__avatar" src="{{ t.avatar.url }}" alt="{{ t.name }}">
-            <span class="q-card__name">{{ t.name }}</span>
-          </div>
+          <img class="q-card__shot" src="{{ t.screenshot.url }}" alt="رأي عميل" loading="lazy" decoding="async">
         </article>
         {% endfor %}
 
@@ -446,7 +478,6 @@
 
   <div class="quotes__dots" data-dots></div>
 </section>
-
   
   
   <!-- ========== الفوتر ========== -->
@@ -487,7 +518,7 @@
   
   
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+     document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== سلايدر: تحوّل العملاء ===== */
   (function () {

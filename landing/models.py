@@ -105,10 +105,8 @@ class SuccessStory(models.Model):
 
 
 class Testimonial(models.Model):
-    """قسم: ماذا قال عنّا المبدعين"""
-    name = models.CharField(max_length=100, verbose_name="اسم العميل")
-    avatar = models.ImageField(upload_to='testimonials/', verbose_name="صورة العميل")
-    text = models.TextField(verbose_name="نص الرأي")
+    """قسم: ماذا قال عنّا المبدعين — سكرين شوت فقط"""
+    screenshot = models.ImageField(upload_to='testimonials/', verbose_name="صورة الرأي (سكرين شوت)")
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
@@ -116,4 +114,4 @@ class Testimonial(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.name      
+        return f"رأي #{self.id}"   

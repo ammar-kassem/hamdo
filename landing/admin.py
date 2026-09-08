@@ -46,8 +46,13 @@ class SuccessStoryAdmin(admin.ModelAdmin):
     list_editable = ('order', 'is_active')
 
 
-
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('name', 'order', 'is_active')
+    list_display = ('screenshot_preview', 'order', 'is_active')
     list_editable = ('order', 'is_active')
+
+    def screenshot_preview(self, obj):
+        if obj.screenshot:
+            return format_html('<img src="{}" style="height:70px;border-radius:8px;">', obj.screenshot.url)
+        return "—"
+    screenshot_preview.short_description = "الصورة"
