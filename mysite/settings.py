@@ -23,13 +23,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s61uhm*7^nuk5)55u8j+%f%x-=rwp*=the!#otl1t3z15h7uwb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = false
+DEBUG = False
+
+
+
+
+
 
 ALLOWED_HOSTS = [
-    " bouslat-alnomow.online",
-     " www.bouslat-alnomow.online",
+    "bouslat-alnomow.com",
+    "www.bouslat-alnomow.com",
     "69.62.127.6",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+     "bouslat-alnomow.com",
+     "www.bouslat-alnomow.com",
+]
+
 
 
 # Application definition

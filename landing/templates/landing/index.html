@@ -1,57 +1,73 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
+<html lang="ar" dir="rtl"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <!-- Google Fonts - Amiri -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'landing/css/style.css' %}">
+
   <title>حمدو الدلال | التسويق بالمحتوى</title>
+
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
+
+
 <body class="bg-black">
+<!-- hero -->
+<section class="hero">
 
-  <!-- hero -->
-  <section class="hero">
-    <span class="eyebrow">حمدو الدلال</span>
+  <h2>
+    نظام عملي لتحقيق
+    <span class="en-accent">100</span> ألف
+    متابع و
+    <span class="en-accent">10</span> ألف
+    دولار شهرياً خلال
+    <span class="en-accent">90</span> يوم
+  </h2>
 
-    <h2>
-      نظام عملي لتحقيق
-      <span class="en-accent">100</span> ألف
-      متابع و
-      <span class="en-accent">10</span> ألف
-      دولار شهرياً خلال
-      <span class="en-accent">90</span> يوم
-    </h2>
+  <!-- video -->
+  {% if hero_video %}
+  <div class="video-wrap">
+    <div class="video-frame">
+      <span class="video-corner video-corner--tl"></span>
+      <span class="video-corner video-corner--tr"></span>
+      <span class="video-corner video-corner--bl"></span>
+      <span class="video-corner video-corner--br"></span>
 
-<!-- video -->
-{% if hero_video %}
-<div class="video-wrap">
-  <div class="video-frame">
-    <span class="video-corner video-corner--tl"></span>
-    <span class="video-corner video-corner--tr"></span>
-    <span class="video-corner video-corner--bl"></span>
-    <span class="video-corner video-corner--br"></span>
-
-    <div class="video-frame__inner" data-hero-video data-video-id="{{ hero_video.video_id }}">
-      <img class="video-frame__thumb" src="{{ hero_video.thumbnail_url }}" alt="" loading="lazy" decoding="async">
-      <button type="button" class="video-frame__play" data-hero-play aria-label="تشغيل الفيديو">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M8 5v14l11-7-11-7Z" fill="#201603"/></svg>
-      </button>
+      <div class="video-frame__inner" data-hero-video data-video-id="{{ hero_video.video_id }}">
+        <img class="video-frame__thumb" src="{{ hero_video.thumbnail_url }}" alt="" loading="lazy" decoding="async">
+        <button type="button" class="video-frame__play" data-hero-play aria-label="تشغيل الفيديو">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M8 5v14l11-7-11-7Z" fill="#201603"/></svg>
+        </button>
+      </div>
     </div>
   </div>
-</div>
-{% endif %}
+  {% endif %}
 
-    
+  <a class="btn-book" href="https://calendly.com/hamdomarketing/45-minute-meeting-clone">
+    <span class="btn-book__inner">
+      <svg class="btn-book__icon" viewBox="0 0 24 24" width="19" height="19" fill="none">
+        <rect x="3.5" y="5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M8.5 13.5l2 2 4.5-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="btn-book__text">احجز الآن</span>
+    </span>
+  </a>
+   <!-- <span class="eyebrow">حمدو الدلال</span> -->
+</section>
 
-    <a class="btn-gold" href="https://calendly.com/hamdomarketing/45-minute-meeting-clone">احجز الآن<a/>
-  </section>
+
 
 
   <!-- ========== قسم: موثّق من قبل ========== -->
@@ -121,24 +137,12 @@
           {% for reel in reels_row1 %}
           <article class="reel-card">
             <img src="{{ reel.image.url }}" alt="" loading="lazy">
-            <span class="reel-card__views">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
-                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
-              </svg>{{ reel.views_label }}
-            </span>
           </article>
           {% endfor %}
           <!-- نسخة مكررة لضمان حلقة لا نهائية بدون فراغ -->
           {% for reel in reels_row1 %}
           <article class="reel-card" aria-hidden="true">
             <img src="{{ reel.image.url }}" alt="" loading="lazy">
-            <span class="reel-card__views">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
-                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
-              </svg>{{ reel.views_label }}
-            </span>
           </article>
           {% endfor %}
         </div>
@@ -150,23 +154,12 @@
           {% for reel in reels_row2 %}
           <article class="reel-card">
             <img src="{{ reel.image.url }}" alt="" loading="lazy">
-            <span class="reel-card__views">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
-                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
-              </svg>{{ reel.views_label }}
-            </span>
+  
           </article>
           {% endfor %}
           {% for reel in reels_row2 %}
           <article class="reel-card" aria-hidden="true">
             <img src="{{ reel.image.url }}" alt="" loading="lazy">
-            <span class="reel-card__views">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
-                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
-              </svg>{{ reel.views_label }}
-            </span>
           </article>
           {% endfor %}
         </div>
@@ -178,23 +171,11 @@
           {% for reel in reels_row3 %}
           <article class="reel-card">
             <img src="{{ reel.image.url }}" alt="" loading="lazy">
-            <span class="reel-card__views">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
-                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
-              </svg>{{ reel.views_label }}
-            </span>
           </article>
           {% endfor %}
           {% for reel in reels_row3 %}
           <article class="reel-card" aria-hidden="true">
             <img src="{{ reel.image.url }}" alt="" loading="lazy">
-            <span class="reel-card__views">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="#d9d9d9" stroke-width="1.6" />
-                <circle cx="12" cy="12" r="3" stroke="#d9d9d9" stroke-width="1.6" />
-              </svg>{{ reel.views_label }}
-            </span>
           </article>
           {% endfor %}
         </div>
@@ -439,7 +420,7 @@
       <linearGradient id="pGrad5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" style="stop-color:var(--gold-light)"/><stop offset="100%" style="stop-color:var(--gold)"/></linearGradient>
     </defs>
   </svg>
-</section>"
+</section>
   
 
 
@@ -470,9 +451,8 @@
     </div>
 
     <button type="button" class="quotes__arrow quotes__arrow--next" data-next aria-label="التالي">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-        <path d="M9 5l7 7-7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M15 5l-7 7 7 7" stroke="#201603" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+   
     </button>
   </div>
 

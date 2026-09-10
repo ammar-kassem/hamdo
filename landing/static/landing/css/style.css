@@ -1,5 +1,6 @@
 
-    /* ========================================
+  
+  /* ========================================
        المتغيرات العامة
     ======================================== */
     :root {
@@ -20,7 +21,7 @@
       min-height: 100vh;
       background-color: var(--bg);
       color: #ffffff;
-      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-family: 'Amiri', sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -67,50 +68,27 @@
       50%  { background-position: 100% 100%; }
       100% { background-position: 0% 0%; }
     }
-
-    
-/* ========================================
+    /* ========================================
        القسم الأول (Hero)
     ======================================== */
 .hero {
   position: relative;
   z-index: 1;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   width: 100%;
   max-width: 56rem;
-  min-height: 100vh;
-  
+
   margin: 0 auto;
-  padding: 2rem clamp(1.25rem, 5vw, 3rem);
-  
+  padding: clamp(2.25rem, 7vw, 3.5rem) clamp(1.25rem, 5vw, 3rem) clamp(1.75rem, 5vw, 2.75rem);
+
   text-align: center;
   box-sizing: border-box;
 }
-
-/* اللابتوب والشاشات الكبيرة */
-@media (min-width: 768px) {
-  .hero {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-}
-
-/* الجوال */
-@media (max-width: 767px) {
-  .hero {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
-  }
-}
-
-
-
-
 
     /* شارة صغيرة أعلى العنوان */
     .eyebrow {
@@ -118,7 +96,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.4rem 1.1rem;
-      margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+      margin-bottom: clamp(1rem, 2.5vw, 1.4rem);
       border: 1px solid rgba(212, 175, 55, 0.35);
       border-radius: 999px;
       background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), transparent);
@@ -143,16 +121,15 @@
     .hero h2 {
       margin: 0;
       max-width: 44rem;
-      font-size: clamp(1.6rem, 1.05rem + 2.6vw, 3rem);
-      line-height: 1.55;
+      font-size: clamp(1.5rem, 1rem + 2.4vw, 2.75rem);
+      line-height: 1.5;
       font-weight: 700;
       letter-spacing: 0.2px;
       opacity: 0;
       animation: reveal 0.9s ease 0.12s forwards;
     }
 
-   
-   .en-accent {
+    .en-accent {
       font-family: 'Cinzel', serif;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -175,7 +152,7 @@
       position: relative;
       width: 100%;
       max-width: 40rem;
-      margin-top: clamp(2.25rem, 6vw, 3.5rem);
+      margin-top: clamp(1.5rem, 4.5vw, 2.25rem);
       opacity: 0;
       animation: reveal 0.9s ease 0.28s forwards;
     }
@@ -203,9 +180,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      border: 0;
       display: block;
-      
     }
 
     /* زوايا زخرفية صغيرة تعطي طابع الأُطر الفاخرة */
@@ -223,146 +199,132 @@
     .video-corner--bl { bottom: -8px; right: -8px; border-left: none; border-top: none; border-radius: 0 0 6px 0; }
     .video-corner--br { bottom: -8px; left: -8px; border-right: none; border-top: none; border-radius: 0 0 0 6px; }
 
-/* صورة مصغرة + زر التشغيل داخل فيديو الهيرو */
-  .video-frame__thumb {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .video-frame__play {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 64px;
-    height: 64px;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--gold-light, #f4e3a1), var(--gold, #d4af37));
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 10px 22px rgba(0, 0, 0, 0.45);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .video-frame__play svg { margin-right: -2px; }
-
-  .video-frame__play:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 0 28px rgba(212, 175, 55, 0.8), 0 10px 22px rgba(0, 0, 0, 0.45);
-  }
-
-  .video-frame__inner {
-    position: relative; /* لازم موجودة أصلاً بالستايل الحالي، تأكد منها */
-  }
-
-  .video-frame__inner iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-  }
-
-
-
-
-
-
-
-
-
-    /* ========================================
-       زر الحجز
-    ======================================== */
-    .btn-gold {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: clamp(2.25rem, 6vw, 3.5rem);
-      font-family: 'Noto Kufi Arabic', sans-serif;
-      font-weight: 800;
-      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-      color: #201603;
-      text-decoration: none;
-      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%);
-      padding: clamp(0.9rem, 2vw, 1.05rem) clamp(2.5rem, 6vw, 3.5rem);
-      border: none;
-      border-radius: 999px;
-      box-shadow:
-        0 0 15px rgba(212, 175, 55, 0.55),
-        0 0 35px rgba(212, 175, 55, 0.3),
-        0 10px 25px rgba(0, 0, 0, 0.5);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      overflow: hidden;
-      isolation: isolate;
-      cursor: pointer;
-      animation: reveal 0.9s ease 0.4s forwards, pulse-glow 2.4s ease-in-out 1.4s infinite;
-      opacity: 0;
+    /* صورة مصغرة + زر التشغيل داخل فيديو الهيرو */
+    .video-frame__thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .btn-gold::before {
+    .video-frame__play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 64px;
+      height: 64px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-light, #f4e3a1), var(--gold, #d4af37));
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 10px 22px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-frame__play svg { margin-right: -2px; }
+
+    .video-frame__play:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 28px rgba(212, 175, 55, 0.8), 0 10px 22px rgba(0, 0, 0, 0.45);
+    }
+
+    /* ========================================
+       زر الحجز — تصميم "الإطار المتوهّج الدوّار"
+    ======================================== */
+    .btn-book {
+      position: relative;
+      display: inline-flex;
+      margin-top: clamp(1.75rem, 5vw, 2.5rem);
+      border-radius: 999px;
+      text-decoration: none;
+      opacity: 0;
+      animation: reveal 0.9s ease 0.4s forwards;
+    }
+
+    /* الإطار: تدرج مخروطي يدور ببطء حول الزر */
+    .btn-book::before {
       content: "";
       position: absolute;
       inset: -2px;
-      z-index: -1;
+      z-index: 0;
       border-radius: inherit;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-      filter: blur(10px);
-      opacity: 0.7;
+      background: conic-gradient(
+        from 0deg,
+        var(--gold-dark),
+        var(--gold-light) 25%,
+        var(--gold) 50%,
+        var(--gold-light) 75%,
+        var(--gold-dark) 100%
+      );
+      animation: btn-book-rotate 4.5s linear infinite;
     }
 
-    .btn-gold::after {
+    /* توهج خلفي ناعم يتنفّس خلف الإطار */
+    .btn-book::after {
       content: "";
       position: absolute;
-      top: 0;
-      right: -150%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.75), transparent);
-      transform: skewX(-20deg);
-      animation: shine 2.8s ease-in-out 1.4s infinite;
+      inset: -10px;
+      z-index: -1;
+      border-radius: inherit;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.45), transparent 70%);
+      filter: blur(10px);
+      animation: btn-book-breathe 2.6s ease-in-out infinite;
     }
 
-    .btn-gold:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow:
-        0 0 25px rgba(212, 175, 55, 0.75),
-        0 0 55px rgba(212, 175, 55, 0.5),
-        0 14px 30px rgba(0, 0, 0, 0.55);
+    .btn-book__inner {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: clamp(0.85rem, 2vw, 1rem) clamp(2.1rem, 5vw, 2.9rem);
+      border-radius: 999px;
+      background: linear-gradient(180deg, #17130a, #0c0a06);
+      color: var(--gold-light);
+      font-family: 'Amiri', sans-serif;
+      font-weight: 800;
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      letter-spacing: 0.2px;
+      transition: color 0.35s ease, background 0.35s ease;
     }
 
-    .btn-gold:focus-visible {
+    .btn-book__icon {
+      flex: 0 0 auto;
+      transition: transform 0.4s ease;
+    }
+
+    .btn-book:hover .btn-book__inner {
+      background: linear-gradient(180deg, #1e1809, #120e05);
+      color: var(--gold-light);
+    }
+
+    .btn-book:hover .btn-book__icon {
+      transform: rotate(-8deg) scale(1.08);
+    }
+
+    .btn-book:hover::before {
+      animation-duration: 1.8s;
+    }
+
+    .btn-book:active .btn-book__inner {
+      transform: scale(0.97);
+    }
+
+    .btn-book:focus-visible {
       outline: 2px solid var(--gold-light);
-      outline-offset: 4px;
+      outline-offset: 5px;
     }
 
-    @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow:
-          0 0 15px rgba(212, 175, 55, 0.55),
-          0 0 35px rgba(212, 175, 55, 0.3),
-          0 10px 25px rgba(0, 0, 0, 0.5);
-      }
-      50% {
-        box-shadow:
-          0 0 25px rgba(212, 175, 55, 0.8),
-          0 0 55px rgba(212, 175, 55, 0.5),
-          0 10px 25px rgba(0, 0, 0, 0.5);
-      }
-    }
+    
 
-    @keyframes shine {
-      0%   { right: -150%; }
-      45%  { right: 120%; }
-      100% { right: 120%; }
+    @keyframes btn-book-breathe {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 1; }
     }
 
     /* ========================================
@@ -370,8 +332,9 @@
     ======================================== */
     @media (prefers-reduced-motion: reduce) {
       body::after,
-      .btn-gold,
-      .btn-gold::after,
+      .btn-book,
+      .btn-book::before,
+      .btn-book::after,
       .eyebrow,
       .hero h2,
       .video-wrap {
@@ -388,6 +351,11 @@
       .hero h2 { line-height: 1.5; }
       .video-corner { width: 16px; height: 16px; }
     }
+
+
+
+
+
 
 
 /* ========================================
@@ -412,7 +380,7 @@
 
   .verified__title {
     margin: 0;
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Amiri', sans-serif;
     font-weight: 700;
     font-size: clamp(1.35rem, 0.9rem + 1.8vw, 2.1rem);
     color: #ffffff;
@@ -459,7 +427,7 @@
     display: flex;
     align-items: center;
     gap: 0.85rem;
-    width: clamp(225px, 60vw, 240px);
+    width: clamp(240px, 60vw, 260px);
     padding: 0.9rem 1.1rem;
     background: #1c1c1e;
     border: 1px solid rgba(212, 175, 55, 0.12);
@@ -560,7 +528,7 @@
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Amiri', sans-serif;
     font-weight: 700;
     font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
     color: #ffffff;
@@ -579,7 +547,7 @@
 
   .showcase__sub {
     margin: 0.6rem 0 0;
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Amiri', sans-serif;
     font-weight: 300;
     font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     color: rgba(255, 255, 255, 0.5);
@@ -647,14 +615,6 @@
     display: block;
   }
 
-  .reel-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 42%);
-    pointer-events: none;
-  }
-
   .reel-card__views {
     position: absolute;
     bottom: 8px;
@@ -664,7 +624,7 @@
     align-items: center;
     gap: 4px;
     direction: ltr;
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Amiri', sans-serif;
     font-weight: 500;
     font-size: clamp(0.68rem, 1.6vw, 0.78rem);
     color: #e9e9e9;
@@ -874,21 +834,7 @@
     background: linear-gradient(90deg, var(--gold-light, #f4e3a1), var(--gold, #d4af37));
   }
 
-  /* ===== من مقاس اللابتوب: 4 عملاء بنفس الوقت ===== */
-  @media (min-width: 860px) {
-    .revamp__pair { flex-direction: row; justify-content: center; gap: clamp(0.6rem, 1.5vw, 1.2rem); }
-
-    .r-photo { height: clamp(150px, 11vw, 190px); max-width: none; }
-
-    .r-connector__svg--v { display: none; }
-    .r-connector__svg--h { display: block; width: 40px; height: clamp(32px, 3.5vw, 42px); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .revamp__track { transition: none; }
-    .r-connector, .r-connector__path { animation: none; }
-  }
-
+ 
 
  /* كود مضاف اضافة لاجل السلايدر*/
 /* حاوية الأسهم + السلايدر */
@@ -927,9 +873,7 @@
     box-shadow: none;
   }
 
-  @media (min-width: 640px) {
-    .revamp__arrow { display: inline-flex; }
-  }
+ 
 
   /* جملة المتابعين الزجاجية (تظهر على الجوال فقط، فوق نقطة تقاطع الخط) */
   .revamp__pair { position: relative; }
@@ -940,7 +884,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
-    display: none;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0.35rem 0.9rem;
@@ -957,74 +901,9 @@
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(212, 175, 55, 0.35);
   }
 
-  @media (max-width: 859px) {
-    .r-follow { display: inline-flex; }
+  @media (min-width: 768px) {
+    .revamp__arrow { display: inline-flex; }
   }
-  /* ===== من مقاس اللابتوب: 4 عملاء بنفس الوقت ===== */
-  @media (min-width: 860px) {
-    .revamp__pair { flex-direction: row; justify-content: center; gap: clamp(0.6rem, 1.5vw, 1.2rem); }
-
-    .r-photo { max-width: none; } /* حذفنا تحديد height هنا، فترث نفس ارتفاع الجوال تلقائياً */
-
-    .r-connector__svg--v { display: none; }
-    .r-connector__svg--h { display: block; width: 40px; height: clamp(32px, 3.5vw, 42px); }
-  }
-/* يتطبق هذا الكود فقط على شاشات الديسكتوب الكبيرة */
-@media (min-width: 1024px) {
-    /* 1. تمديد حاوية السلايدر لتستوعب 6 شاشات كاملة أفقياً */
-    .revamp__track[data-revamp-track] {
-        width: 600% !important;
-        display: flex !important;
-        flex-wrap: nowrap !important;
-    }
-
-    /* 2. جعل الكرت الواحد (قبل وبعد) يأخذ عرض الشاشة الكاملة 100% */
-    .revamp__slide[data-revamp-slide] {
-        flex: 0 0 16.66667% !important;
-        width: 16.66667% !important;
-        max-width: 16.66667% !important;
-        min-width: 16.66667% !important;
-        padding: 0 40px !important; /* مسافة أمان لمنع الالتصاق بالحواف */
-        box-sizing: border-box !important;
-    }
-
-    /* 3. تنسيق الصورتين لتبدوان بجانب بعضهما بشكل متناسق وموسط */
-    .revamp__pair {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        max-width: 1200px !important; /* لمنع التمدد المفرط على الشاشات العملاقة */
-        margin: 0 auto !important;
-        gap: 30px !important;
-    }
-
-    /* 4. إعطاء الصورتين مساحة مرنة ومتساوية لتكبير تفاصيل الحساب */
-    .revamp__pair figure, .r-photo {
-        flex: 1 !important;
-        width: 100% !important;
-        margin: 0 !important;
-    }
-
-    /* 5. ضبط أبعاد الصور لعرض ممتاز ومريح للعين */
-    .revamp__pair img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 550px !important; /* حد أقصى للارتفاع لعدم الخروج عن إطار الشاشة */
-        object-fit: contain !important;
-    }
-
-    /* 6. ضبط خط الربط الذهبي ليتوسط المسافة تماماً */
-    .r-connector {
-        flex: 0 0 100px !important;
-        display: flex !important;
-        justify-content: center !important;
-    }
-}
-
-
-
 
 
 
@@ -1053,7 +932,7 @@
 
   .quotes__title {
     margin: 0;
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Amiri', sans-serif;
     font-weight: 700;
     font-size: clamp(1.4rem, 0.95rem + 1.8vw, 2.2rem);
     color: #ffffff;
