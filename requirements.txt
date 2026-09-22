@@ -3,3 +3,4 @@ Django==6.1
 pillow==12.3.0
 sqlparse==0.6.0
 tzdata==2026.3
+gunicorn==26.2.0
